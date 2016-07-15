@@ -45,5 +45,30 @@ RSpec.describe "e-BookMobile API", type: :rambo do
         expect(last_response.status).to eql 200
       end
     end
+    describe "GET" do
+      
+      
+
+      let(:response_schema) do
+        File.read("spec/support/examples/authors_get_response_schema.json")
+      end
+
+      let(:output_file) do
+        "spec/contract/output/authors_get_response.json"
+      end
+
+      it "retrieve a list of authors" do
+        get route
+
+        File.open(output_file, "w+") {|file| file.puts JSON.pretty_generate(JSON.parse(last_response.body)) }
+
+        expect(last_response.body).to match_schema response_schema
+      end
+
+      it "returns status 200" do
+        get route
+        expect(last_response.status).to eql 200
+      end
+    end
   end
 end

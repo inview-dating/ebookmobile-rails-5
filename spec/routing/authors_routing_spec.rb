@@ -4,7 +4,6 @@ RSpec.describe AuthorsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      pending "Fuller implementation"
       expect(:get => "/authors").to route_to("authors#index")
     end
 
