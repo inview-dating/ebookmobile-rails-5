@@ -8,13 +8,13 @@
       "id": { "type": "integer" },
       "first_name": { "type": "string" },
       "last_name": { "type": "string" },
-      "genre": { "type": "string" },
+      "genre": { "type": [ "string", "null" ] },
       "birth_year": { 
-        "type": "integer",
+        "type": [ "integer", "null" ],
         "maximum": 2010
       },
       "death_year": {
-        "type": "integer",
+        "type": [ "integer", "null" ],
         "maximum": 2016
       },
       "created_at": {
