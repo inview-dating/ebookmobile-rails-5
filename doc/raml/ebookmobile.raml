@@ -1,0 +1,75 @@
+#%RAML 0.8
+---
+title: e-BookMobile API
+baseUri: http://api.e-bookmobile.com/{version}
+version: v1
+
+/authors:
+  post:
+    description: Add a new author to the database
+    body:
+      application/json:
+        schema: |
+          {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "required": [ "author" ],
+            "additionalProperties": false,
+            "properties": {
+              "author": {
+                "type": "object",
+                "required": [ "first_name", "last_name" ],
+                "properties": {
+                  "first_name": { "type": "string" },
+                  "last_name": { "type": "string" },
+                  "genres": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "birth_year": {
+                    "type": "integer",
+                    "maximum": 2010
+                  },
+                  "death_year": {
+                    "type": "integer",
+                    "maximum": 2016
+                  }
+                }
+              }
+            }
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "required": [ "author" ],
+                "additionalProperties": false,
+                "properties": {
+                  "author": {
+                    "type": "object",
+                    "required": [ "id", "first_name", "last_name" ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "first_name": { "type": "string" },
+                      "last_name": { "type": "string" },
+                      "genres": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      },
+                      "birth_year": {
+                        "type": "integer",
+                        "maximum": 2010
+                      },
+                      "death_year": {
+                        "type": "integer",
+                        "maximum": 2016
+                      }
+                    }
+                  }
+                }
+              }
