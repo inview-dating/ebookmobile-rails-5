@@ -1,6 +1,9 @@
 require "rails_helper"
 require "rack/test"
+
 require_relative "./support/matchers/rambo_matchers"
+
+FactoryGirl.find_definitions
 
 module ApiHelper
   include Rack::Test::Methods
