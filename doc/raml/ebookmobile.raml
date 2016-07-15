@@ -9,62 +9,9 @@ version: v1
     description: Add a new author to the database
     body:
       application/json:
-        schema: |
-          {
-            "$schema": "http://json-schema.org/draft-04/schema#",
-            "type": "object",
-            "required": [ "author" ],
-            "additionalProperties": false,
-            "properties": {
-              "author": {
-                "type": "object",
-                "required": [ "first_name", "last_name" ],
-                "properties": {
-                  "first_name": { "type": "string" },
-                  "last_name": { "type": "string" },
-                  "genre": { "type": "string" },
-                  "birth_year": {
-                    "type": "integer",
-                    "maximum": 2010
-                  },
-                  "death_year": {
-                    "type": "integer",
-                    "maximum": 2016
-                  }
-                }
-              }
-            }
-          }
+        schema: !include entities/schemas/post_request_schema.json
     responses:
       200:
         body:
           application/json:
-            schema: |
-              {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "type": "object",
-                "required": [ "id", "first_name", "last_name" ],
-                "additionalProperties": false,
-                "properties": {
-                  "id": { "type": "integer" },
-                  "first_name": { "type": "string" },
-                  "last_name": { "type": "string" },
-                  "genre": { "type": "string" },
-                  "birth_year": {
-                    "type": "integer",
-                    "maximum": 2010
-                  },
-                  "death_year": {
-                    "type": "integer",
-                    "maximum": 2016
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "updated_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  }
-                }
-              }
+            schema: !include entities/schemas/success_post_response_schema.json
