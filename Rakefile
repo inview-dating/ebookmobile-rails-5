@@ -3,4 +3,10 @@
 
 require_relative 'config/application'
 
+unless ENV["RAILS_ENV"] == "production"
+  require "rambo/rake/task"
+
+  Rambo::Rake::Task.new
+end
+
 Rails.application.load_tasks
