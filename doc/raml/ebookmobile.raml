@@ -22,3 +22,14 @@ version: v1
         body:
           application/json:
             schema: !include entities/schemas/get_collection_post_response_schema.json
+  /{id}:
+    uriParameters:
+      id:
+        type: integer
+    get:
+      description: Retrieve a single author
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include entities/schemas/get_author_response_schema.json
