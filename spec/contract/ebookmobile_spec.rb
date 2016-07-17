@@ -13,6 +13,7 @@ RSpec.describe "e-BookMobile API", type: :rambo do
 
   describe "/authors" do
     let(:route) { "/authors" }
+    let!(:authors) { FactoryGirl.create_list(:author, 3) }
 
     describe "POST" do
       let(:request_body) do
@@ -21,7 +22,7 @@ RSpec.describe "e-BookMobile API", type: :rambo do
           symbolize_names: true
         )
       end
-
+      
       let(:response_schema) do
         File.read("spec/support/examples/authors_post_response_schema.json")
       end
@@ -43,10 +44,8 @@ RSpec.describe "e-BookMobile API", type: :rambo do
         expect(last_response.status).to eql 200
       end
     end
-
+    
     describe "GET" do
-      let!(:authors) { FactoryGirl.create_list(:author, 3) }
-      
       let(:response_schema) do
         File.read("spec/support/examples/authors_get_response_schema.json")
       end

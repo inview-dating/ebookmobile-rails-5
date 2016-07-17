@@ -6,7 +6,7 @@ gem 'puma', '~> 3.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
-  gem 'rambo_ruby', '~> 0.7'
+  gem 'rambo_ruby', '~> 0.8'
   gem 'factory_girl', '~> 4.7'
   gem 'byebug', platform: :mri
 end
